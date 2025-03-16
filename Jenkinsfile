@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven "MAVEN"
+        maven "Maven"  // Ensure this matches the configured name in Global Tool Configuration
         jdk "JDK"
     }
 
@@ -27,7 +27,7 @@ pipeline {
         always {
             junit(
                 allowEmptyResults: true,
-                testResults: '**/test-reports/*.xml'
+                testResults: '*/test-reports/*.xml'
             )
         }
     }
