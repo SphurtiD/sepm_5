@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven "Maven"  // Ensure this matches the configured name in Global Tool Configuration
+        maven "Maven"
         jdk "JDK"
     }
 
@@ -16,8 +16,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                dir("/var/lib/jenkins/workspace/demopipelinetask/my-app") {
-                    sh 'mvn -B -DskipTests clean package'
+                dir("C:/ProgramData/Jenkins/.jenkins/workspace/exp5") {
+                    bat 'mvn -B -DskipTests clean package'
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
         always {
             junit(
                 allowEmptyResults: true,
-                testResults: '*/test-reports/*.xml'
+                testResults: '**/test-reports/*.xml'
             )
         }
     }
